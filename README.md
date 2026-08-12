@@ -110,6 +110,13 @@ The framework follows a modular architecture where each reconnaissance task is h
 | `modules/report_generator.py` | Generates the final HTML report |
 
 ---
+## 🚀 Usage
+
+### 1. Clone the repository
+
+```bash
+git clone https://github.com/vk18-tech/Web-Recon-Automation.git
+cd Web-Recon-Automation
 
 ## 🔎 Features
 
