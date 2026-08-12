@@ -34,4 +34,6 @@ dist/
 .env.*
 
 # Temporary reports
+
 reports/recon_report_*.html
+!reports/recon_report_example.com.html

@@ -1,0 +1,1378 @@
+
+<!DOCTYPE html>
+
+<html lang="en">
+
+<head>
+
+<meta charset="UTF-8">
+
+<meta name="viewport"
+      content="width=device-width, initial-scale=1.0">
+
+<title>
+Web Reconnaissance Report - example.com
+</title>
+
+<style>
+
+body {
+    font-family:
+        Arial,
+        Helvetica,
+        sans-serif;
+
+    margin: 0;
+
+    background: #f4f6f8;
+
+    color: #222;
+}
+
+header {
+    background: #17202a;
+
+    color: white;
+
+    padding: 35px;
+}
+
+header h1 {
+    margin: 0 0 10px 0;
+}
+
+.container {
+    width: 92%;
+
+    max-width: 1250px;
+
+    margin: 30px auto;
+}
+
+section {
+    background: white;
+
+    padding: 25px;
+
+    margin-bottom: 25px;
+
+    border-radius: 8px;
+
+    box-shadow:
+        0 2px 8px rgba(0,0,0,0.08);
+}
+
+h2 {
+    border-bottom:
+        2px solid #ddd;
+
+    padding-bottom: 10px;
+}
+
+h3 {
+    margin-top: 25px;
+}
+
+table {
+    width: 100%;
+
+    border-collapse:
+        collapse;
+
+    margin-top: 15px;
+}
+
+th,
+td {
+    border:
+        1px solid #ddd;
+
+    padding: 10px;
+
+    text-align: left;
+
+    vertical-align: top;
+}
+
+th {
+    background: #f0f2f4;
+}
+
+ul {
+    line-height: 1.8;
+}
+
+.summary-grid {
+    display: grid;
+
+    grid-template-columns:
+        repeat(4, 1fr);
+
+    gap: 15px;
+
+    margin-top: 20px;
+}
+
+.summary-card {
+    padding: 20px;
+
+    border-radius: 8px;
+
+    text-align: center;
+
+    background: #f4f6f8;
+}
+
+.summary-card h3 {
+    margin: 0;
+
+    font-size: 28px;
+}
+
+.summary-card p {
+    margin-bottom: 0;
+}
+
+.high {
+    border-left:
+        5px solid #c0392b;
+}
+
+.medium {
+    border-left:
+        5px solid #e67e22;
+}
+
+.low {
+    border-left:
+        5px solid #f1c40f;
+}
+
+.info {
+    border-left:
+        5px solid #3498db;
+}
+
+.status-completed {
+    font-weight: bold;
+}
+
+.finding-note {
+    background: #f8f9fa;
+
+    padding: 15px;
+
+    border-left:
+        4px solid #3498db;
+
+    margin-top: 15px;
+}
+
+pre {
+    white-space:
+        pre-wrap;
+
+    word-wrap:
+        break-word;
+}
+
+footer {
+    text-align: center;
+
+    padding: 25px;
+
+    color: #666;
+}
+
+</style>
+
+</head>
+
+<body>
+
+<header>
+
+<h1>Web Reconnaissance Report</h1>
+
+<p>
+<strong>Target:</strong>
+example.com
+</p>
+
+<p>
+<strong>Generated:</strong>
+2026-08-12 15:46:05
+</p>
+
+<p>
+<strong>Assessment Type:</strong>
+Passive / Basic Web Reconnaissance
+</p>
+
+</header>
+
+<div class="container">
+
+<!-- ======================================== -->
+<!-- EXECUTIVE SUMMARY -->
+<!-- ======================================== -->
+
+<section>
+
+<h2>1. Executive Summary</h2>
+
+<p>
+This report summarizes publicly observable reconnaissance
+information collected for the specified target using the
+Web Recon Automation Framework.
+</p>
+
+<p>
+The framework collected DNS, IP addressing, IP geolocation,
+WHOIS, HTTP, SSL/TLS, web-file and security-header information.
+</p>
+
+<div class="summary-grid">
+
+<div class="summary-card high">
+
+<h3>0</h3>
+
+<p>High Findings</p>
+
+</div>
+
+<div class="summary-card medium">
+
+<h3>3</h3>
+
+<p>Medium Findings</p>
+
+</div>
+
+<div class="summary-card low">
+
+<h3>4</h3>
+
+<p>Low Findings</p>
+
+</div>
+
+<div class="summary-card info">
+
+<h3>0</h3>
+
+<p>Informational</p>
+
+</div>
+
+</div>
+
+<div class="finding-note">
+
+<strong>Important:</strong>
+
+Security header observations are indicators of potential
+security hardening opportunities. They do not by themselves
+prove that the target is vulnerable.
+
+</div>
+
+</section>
+
+<!-- ======================================== -->
+<!-- MODULE STATUS -->
+<!-- ======================================== -->
+
+<section>
+
+<h2>2. Reconnaissance Module Status</h2>
+
+<table>
+
+<tr>
+
+<th>Module</th>
+
+<th>Status</th>
+
+</tr>
+
+<tr>
+
+<td>DNS Reconnaissance</td>
+
+<td class="status-completed">
+Completed
+</td>
+
+</tr>
+
+<tr>
+
+<td>IP Reconnaissance</td>
+
+<td class="status-completed">
+Completed
+</td>
+
+</tr>
+
+<tr>
+
+<td>IP Geolocation</td>
+
+<td class="status-completed">
+Completed
+</td>
+
+</tr>
+
+<tr>
+
+<td>WHOIS Reconnaissance</td>
+
+<td class="status-completed">
+Completed
+</td>
+
+</tr>
+
+<tr>
+
+<td>HTTP Reconnaissance</td>
+
+<td class="status-completed">
+Completed
+</td>
+
+</tr>
+
+<tr>
+
+<td>SSL/TLS Reconnaissance</td>
+
+<td class="status-completed">
+Completed
+</td>
+
+</tr>
+
+<tr>
+
+<td>Web Files Reconnaissance</td>
+
+<td class="status-completed">
+Completed
+</td>
+
+</tr>
+
+<tr>
+
+<td>Security Header Analysis</td>
+
+<td class="status-completed">
+Completed
+</td>
+
+</tr>
+
+
+</table>
+
+</section>
+
+<!-- ======================================== -->
+<!-- SECURITY FINDINGS -->
+<!-- ======================================== -->
+
+<section>
+
+<h2>3. Security Findings</h2>
+
+<table>
+
+<tr>
+
+<th>Finding</th>
+
+<th>Status</th>
+
+<th>Severity</th>
+
+<th>Observation</th>
+
+</tr>
+
+
+<tr>
+
+<td>HSTS Missing</td>
+
+<td>Missing</td>
+
+<td class="medium">
+<strong>
+Medium
+</strong>
+</td>
+
+<td>HSTS security header was not observed in the HTTP response.</td>
+
+</tr>
+
+
+
+<tr>
+
+<td>CSP Missing</td>
+
+<td>Missing</td>
+
+<td class="medium">
+<strong>
+Medium
+</strong>
+</td>
+
+<td>CSP security header was not observed in the HTTP response.</td>
+
+</tr>
+
+
+
+<tr>
+
+<td>X-Frame-Options Missing</td>
+
+<td>Missing</td>
+
+<td class="medium">
+<strong>
+Medium
+</strong>
+</td>
+
+<td>X-Frame-Options security header was not observed in the HTTP response.</td>
+
+</tr>
+
+
+
+<tr>
+
+<td>X-Content-Type-Options Missing</td>
+
+<td>Missing</td>
+
+<td class="low">
+<strong>
+Low
+</strong>
+</td>
+
+<td>X-Content-Type-Options security header was not observed in the HTTP response.</td>
+
+</tr>
+
+
+
+<tr>
+
+<td>Referrer-Policy Missing</td>
+
+<td>Missing</td>
+
+<td class="low">
+<strong>
+Low
+</strong>
+</td>
+
+<td>Referrer-Policy security header was not observed in the HTTP response.</td>
+
+</tr>
+
+
+
+<tr>
+
+<td>Permissions-Policy Missing</td>
+
+<td>Missing</td>
+
+<td class="low">
+<strong>
+Low
+</strong>
+</td>
+
+<td>Permissions-Policy security header was not observed in the HTTP response.</td>
+
+</tr>
+
+
+
+<tr>
+
+<td>Server Banner Exposed</td>
+
+<td>Exposed</td>
+
+<td class="low">
+<strong>
+Low
+</strong>
+</td>
+
+<td>Server information is exposed: cloudflare</td>
+
+</tr>
+
+
+
+</table>
+
+</section>
+
+<!-- ======================================== -->
+<!-- DNS -->
+<!-- ======================================== -->
+
+<section>
+
+<h2>4. DNS Reconnaissance</h2>
+
+
+<h3>A Records</h3>
+
+<ul>
+
+<li>104.20.23.154</li><li>172.66.147.243</li>
+
+</ul>
+
+
+
+<h3>AAAA Records</h3>
+
+<ul>
+
+<li>2606:4700:10::ac42:93f3</li><li>2606:4700:10::6814:179a</li>
+
+</ul>
+
+
+
+<h3>MX Records</h3>
+
+<ul>
+
+<li>0 .</li>
+
+</ul>
+
+
+
+<h3>NS Records</h3>
+
+<ul>
+
+<li>hera.ns.cloudflare.com.</li><li>elliott.ns.cloudflare.com.</li>
+
+</ul>
+
+
+
+<h3>TXT Records</h3>
+
+<ul>
+
+<li>&quot;v=spf1 -all&quot;</li><li>&quot;_k2n1y4vw3qtb4skdx9e7dxt97qrmmq9&quot;</li>
+
+</ul>
+
+
+
+<h3>CNAME Records</h3>
+
+<ul>
+
+<li>No records found</li>
+
+</ul>
+
+
+
+</section>
+
+<!-- ======================================== -->
+<!-- IP -->
+<!-- ======================================== -->
+
+<section>
+
+<h2>5. IP Addresses</h2>
+
+<h3>IPv4 Addresses</h3>
+
+<ul>
+<li>104.20.23.154</li><li>172.66.147.243</li>
+
+</ul>
+
+<h3>IPv6 Addresses</h3>
+
+<ul>
+<li>No records found</li>
+
+</ul>
+
+</section>
+
+<!-- ======================================== -->
+<!-- GEOLOCATION -->
+<!-- ======================================== -->
+
+<section>
+
+<h2>6. IP Geolocation</h2>
+
+<table>
+
+<tr>
+
+<th>IP Address</th>
+<th>Country</th>
+<th>Region</th>
+<th>City</th>
+<th>Postal Code</th>
+<th>ISP</th>
+<th>Organization</th>
+<th>ASN</th>
+
+</tr>
+
+
+<tr>
+
+<td>104.20.23.154</td>
+
+<td>
+United States
+</td>
+
+<td>
+California
+</td>
+
+<td>
+San Francisco
+</td>
+
+<td>
+94102
+</td>
+
+<td>
+Cloudflare, Inc.
+</td>
+
+<td>
+Cloudflare, Inc.
+</td>
+
+<td>
+13335
+</td>
+
+</tr>
+
+
+
+<tr>
+
+<td>172.66.147.243</td>
+
+<td>
+United States
+</td>
+
+<td>
+California
+</td>
+
+<td>
+San Francisco
+</td>
+
+<td>
+94102
+</td>
+
+<td>
+Cloudflare, Inc.
+</td>
+
+<td>
+Cloudflare, Inc.
+</td>
+
+<td>
+13335
+</td>
+
+</tr>
+
+
+
+</table>
+
+<p>
+
+<strong>Note:</strong>
+IP geolocation is approximate and represents information
+associated with the network/IP address. It should not be
+interpreted as the physical location of a specific person
+or device.
+
+</p>
+
+</section>
+
+<!-- ======================================== -->
+<!-- WHOIS -->
+<!-- ======================================== -->
+
+<section>
+
+<h2>7. WHOIS Information</h2>
+
+<table>
+
+
+<tr>
+
+<th>Domain</th>
+
+<td>
+EXAMPLE.COM
+</td>
+
+</tr>
+
+
+
+<tr>
+
+<th>Registrar</th>
+
+<td>
+RESERVED-Internet Assigned Numbers Authority
+</td>
+
+</tr>
+
+
+
+<tr>
+
+<th>Creation Date</th>
+
+<td>
+1995-08-14 04:00:00+00:00
+</td>
+
+</tr>
+
+
+
+<tr>
+
+<th>Expiration Date</th>
+
+<td>
+2026-08-13 04:00:00+00:00
+</td>
+
+</tr>
+
+
+
+<tr>
+
+<th>Updated Date</th>
+
+<td>
+2026-01-16 18:26:50+00:00
+</td>
+
+</tr>
+
+
+
+<tr>
+
+<th>Name Servers</th>
+
+<td>
+[&#x27;ELLIOTT.NS.CLOUDFLARE.COM&#x27;, &#x27;HERA.NS.CLOUDFLARE.COM&#x27;]
+</td>
+
+</tr>
+
+
+
+<tr>
+
+<th>Status</th>
+
+<td>
+[&#x27;clientDeleteProhibited https://icann.org/epp#clientDeleteProhibited&#x27;, &#x27;clientTransferProhibited https://icann.org/epp#clientTransferProhibited&#x27;, &#x27;clientUpdateProhibited https://icann.org/epp#clientUpdateProhibited&#x27;]
+</td>
+
+</tr>
+
+
+
+</table>
+
+</section>
+
+<!-- ======================================== -->
+<!-- HTTP -->
+<!-- ======================================== -->
+
+<section>
+
+<h2>8. HTTP Reconnaissance</h2>
+
+<table>
+
+
+<tr>
+
+<th>URL</th>
+
+<td>
+https://example.com/
+</td>
+
+</tr>
+
+
+
+<tr>
+
+<th>Status Code</th>
+
+<td>
+200
+</td>
+
+</tr>
+
+
+
+<tr>
+
+<th>Response Time</th>
+
+<td>
+0.615
+</td>
+
+</tr>
+
+
+
+<tr>
+
+<th>Server</th>
+
+<td>
+cloudflare
+</td>
+
+</tr>
+
+
+
+<tr>
+
+<th>Content-Type</th>
+
+<td>
+text/html
+</td>
+
+</tr>
+
+
+
+<tr>
+
+<th>Error</th>
+
+<td>
+Not available
+</td>
+
+</tr>
+
+
+
+</table>
+
+<h3>HTTP Headers</h3>
+
+<table>
+
+<tr>
+
+<th>Header</th>
+
+<th>Value</th>
+
+</tr>
+
+
+<tr>
+
+<td>Date</td>
+
+<td>Wed, 12 Aug 2026 10:16:04 GMT</td>
+
+</tr>
+
+
+
+<tr>
+
+<td>Content-Type</td>
+
+<td>text/html</td>
+
+</tr>
+
+
+
+<tr>
+
+<td>Transfer-Encoding</td>
+
+<td>chunked</td>
+
+</tr>
+
+
+
+<tr>
+
+<td>Connection</td>
+
+<td>keep-alive</td>
+
+</tr>
+
+
+
+<tr>
+
+<td>Server</td>
+
+<td>cloudflare</td>
+
+</tr>
+
+
+
+<tr>
+
+<td>last-modified</td>
+
+<td>Sat, 08 Aug 2026 02:07:29 GMT</td>
+
+</tr>
+
+
+
+<tr>
+
+<td>allow</td>
+
+<td>GET, HEAD</td>
+
+</tr>
+
+
+
+<tr>
+
+<td>Age</td>
+
+<td>10152</td>
+
+</tr>
+
+
+
+<tr>
+
+<td>cf-cache-status</td>
+
+<td>HIT</td>
+
+</tr>
+
+
+
+<tr>
+
+<td>Content-Encoding</td>
+
+<td>gzip</td>
+
+</tr>
+
+
+
+<tr>
+
+<td>CF-RAY</td>
+
+<td>a29eb8f538ae1bd3-IXC</td>
+
+</tr>
+
+
+
+</table>
+
+</section>
+
+<!-- ======================================== -->
+<!-- SSL/TLS -->
+<!-- ======================================== -->
+
+<section>
+
+<h2>9. SSL/TLS Information</h2>
+
+<table>
+
+
+<tr>
+
+<th>TLS Version</th>
+
+<td>
+TLSv1.3
+</td>
+
+</tr>
+
+
+
+<tr>
+
+<th>Subject</th>
+
+<td>
+(((&#x27;commonName&#x27;, &#x27;example.com&#x27;),),)
+</td>
+
+</tr>
+
+
+
+<tr>
+
+<th>Issuer</th>
+
+<td>
+(((&#x27;countryName&#x27;, &#x27;US&#x27;),), ((&#x27;organizationName&#x27;, &#x27;SSL Corporation&#x27;),), ((&#x27;commonName&#x27;, &#x27;Cloudflare TLS Issuing ECC CA 3&#x27;),))
+</td>
+
+</tr>
+
+
+
+<tr>
+
+<th>Valid From</th>
+
+<td>
+2026-07-29T22:10:08
+</td>
+
+</tr>
+
+
+
+<tr>
+
+<th>Valid Until</th>
+
+<td>
+2026-10-27T22:17:21
+</td>
+
+</tr>
+
+
+
+<tr>
+
+<th>Days Remaining</th>
+
+<td>
+76
+</td>
+
+</tr>
+
+
+
+<tr>
+
+<th>Error</th>
+
+<td>
+Not available
+</td>
+
+</tr>
+
+
+
+</table>
+
+</section>
+
+<!-- ======================================== -->
+<!-- WEB FILES -->
+<!-- ======================================== -->
+
+<section>
+
+<h2>10. Web Files</h2>
+
+
+<h3>robots.txt</h3>
+
+<table>
+
+<tr>
+
+<th>URL</th>
+
+<td>
+https://example.com/robots.txt
+</td>
+
+</tr>
+
+<tr>
+
+<th>Status Code</th>
+
+<td>
+404
+</td>
+
+</tr>
+
+<tr>
+
+<th>Content</th>
+
+<td>
+Not available
+
+</td>
+
+</tr>
+
+</table>
+
+
+
+<h3>sitemap.xml</h3>
+
+<table>
+
+<tr>
+
+<th>URL</th>
+
+<td>
+https://example.com/sitemap.xml
+</td>
+
+</tr>
+
+<tr>
+
+<th>Status Code</th>
+
+<td>
+404
+</td>
+
+</tr>
+
+<tr>
+
+<th>Content</th>
+
+<td>
+Not available
+
+</td>
+
+</tr>
+
+</table>
+
+
+
+</section>
+
+<!-- ======================================== -->
+<!-- SECURITY HEADERS -->
+<!-- ======================================== -->
+
+<section>
+
+<h2>11. Detailed Security Header Analysis</h2>
+
+<table>
+
+<tr>
+
+<th>Security Header</th>
+
+<th>Status</th>
+
+<th>Value</th>
+
+</tr>
+
+
+<tr>
+
+<td>HSTS</td>
+
+<td>Missing</td>
+
+<td>
+—
+</td>
+
+</tr>
+
+
+
+<tr>
+
+<td>CSP</td>
+
+<td>Missing</td>
+
+<td>
+—
+</td>
+
+</tr>
+
+
+
+<tr>
+
+<td>X-Frame-Options</td>
+
+<td>Missing</td>
+
+<td>
+—
+</td>
+
+</tr>
+
+
+
+<tr>
+
+<td>X-Content-Type-Options</td>
+
+<td>Missing</td>
+
+<td>
+—
+</td>
+
+</tr>
+
+
+
+<tr>
+
+<td>Referrer-Policy</td>
+
+<td>Missing</td>
+
+<td>
+—
+</td>
+
+</tr>
+
+
+
+<tr>
+
+<td>Permissions-Policy</td>
+
+<td>Missing</td>
+
+<td>
+—
+</td>
+
+</tr>
+
+
+
+<tr>
+
+<td>Server Banner</td>
+
+<td>Exposed</td>
+
+<td>
+cloudflare
+</td>
+
+</tr>
+
+
+
+</table>
+
+</section>
+
+</div>
+
+<footer>
+
+Web Recon Automation Framework<br>
+
+Automated Reconnaissance Report
+
+</footer>
+
+</body>
+
+</html>
