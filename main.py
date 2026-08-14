@@ -56,6 +56,13 @@ def main():
     )
 
     parser.add_argument(
+    "--version",
+    action="version",
+    version="Web Recon Automation Framework 1.0.0"
+
+   )
+
+    parser.add_argument(
         "--output",
         help="Custom path for the generated HTML report"
     )
