@@ -116,6 +116,54 @@ The framework follows a modular architecture where each reconnaissance task is h
 
 ---
 
+---
+
+# 🧠 Implementation & Engineering Details
+
+This project uses established Python libraries for individual reconnaissance tasks while implementing the overall automation workflow, validation, analysis, error handling, logging, testing, and report generation within the framework.
+
+## Target Validation
+
+The framework validates the supplied domain or URL before reconnaissance begins.
+
+The validator:
+
+- Checks whether the target format is valid
+- Normalizes the target
+- Prevents invalid targets from reaching reconnaissance modules
+- Provides clear validation errors to the user
+
+---
+
+## Reconnaissance Orchestration
+
+The main application coordinates the individual reconnaissance modules.
+
+The workflow is:
+
+```text
+Input Target
+     ↓
+Validation
+     ↓
+DNS Reconnaissance
+     ↓
+IP Discovery
+     ↓
+IP Geolocation
+     ↓
+WHOIS Reconnaissance
+     ↓
+HTTP Reconnaissance
+     ↓
+SSL/TLS Reconnaissance
+     ↓
+Web Files Analysis
+     ↓
+Security Header Analysis
+     ↓
+Report Generation
+
 # 🚀 Installation
 
 ## Prerequisites
