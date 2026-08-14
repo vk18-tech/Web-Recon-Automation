@@ -1,4 +1,4 @@
-import sys
+import argparse
 import logging
 
 from core.validator import validate_target
@@ -33,19 +33,41 @@ logger = logging.getLogger(__name__)
 
 def main():
 
-    print("\n Web Recon Automation Framework")
+    print("\n# Web Recon Automation Framework")
     print("========================================")
 
     # ========================================
-    # Target Input
+    # Command Line Arguments
     # ========================================
 
-    if len(sys.argv) != 2:
+    parser = argparse.ArgumentParser(
+        description="Automated web reconnaissance and HTML reporting framework."
+    )
 
-        print("Usage: python main.py <domain>")
-        return
+    parser.add_argument(
+        "target",
+        help="Target domain or URL, for example: example.com"
+    )
 
-    raw_target = sys.argv[1]
+    parser.add_argument(
+        "--verbose",
+        action="store_true",
+        help="Display detailed logging information during reconnaissance"
+    )
+
+    parser.add_argument(
+        "--output",
+        help="Custom path for the generated HTML report"
+    )
+
+    args = parser.parse_args()
+
+    raw_target = args.target
+    verbose = args.verbose
+    output_path = args.output
+
+    if verbose:
+        logger.setLevel(logging.DEBUG)
 
     # ========================================
     # Target Validation
@@ -319,10 +341,6 @@ def main():
             f"\n{http_results['Error']}"
         )
 
-        logger.warning(
-            "HTTP reconnaissance returned an error"
-        )
-
     logger.info(
         "HTTP reconnaissance completed"
     )
@@ -467,7 +485,8 @@ def main():
         ssl_results=ssl_results,
         web_files_results=web_files_results,
         security_results=security_results,
-        geolocation_results=geolocation_results
+        geolocation_results=geolocation_results,
+        output_path=output_path
     )
 
     print(
