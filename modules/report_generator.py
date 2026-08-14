@@ -102,6 +102,73 @@ def generate_report(
                     f"is not present in the HTTP response."
                 )
             })
+    # ========================================
+    # Scan Summary
+    # ========================================
+
+    ipv4_addresses = ip_results.get("IPv4 Addresses", [])
+    ipv6_addresses = ip_results.get("IPv6 Addresses", [])
+
+    finding_severities = [
+        finding["Severity"]
+        for finding in findings
+    ]
+
+    severity_order = {
+        "High": 3,
+        "Medium": 2,
+        "Low": 1
+    }
+
+    highest_severity = "None"
+
+    if finding_severities:
+        highest_severity = max(
+            finding_severities,
+            key=lambda severity: severity_order.get(
+                severity,
+                0
+            )
+        )
+
+    generated_time = datetime.now().strftime(
+        "%Y-%m-%d %H:%M:%S"
+    )
+
+    summary_html = f"""        <table>
+            <tr>
+                <th>Target</th>
+                <td>{escape(target)}</td>
+            </tr>
+
+            <tr>
+                <th>Scan Time</th>
+                <td>{escape(generated_time)}</td>
+            </tr>
+
+            <tr>
+                <th>IPv4 Addresses</th>
+                <td>{len(ipv4_addresses)}</td>
+            </tr>
+
+            <tr>
+                <th>IPv6 Addresses</th>
+                <td>{len(ipv6_addresses)}</td>
+            </tr>
+
+            <tr>
+                <th>Security Findings</th>
+                <td>{len(findings)}</td>
+            </tr>
+
+            <tr>
+                <th>Highest Severity</th>
+                <td>{escape(highest_severity)}</td>
+            </tr>
+        </table>
+    </section>
+    """
+
 
     # ========================================
     # DNS Records
@@ -475,6 +542,8 @@ footer {{
 </header>
 
 <div class="container">
+
+{summary_html}
 
 <section>
 
