@@ -1,14 +1,14 @@
-
 ![Python](https://img.shields.io/badge/Python-3.x-blue?logo=python)
 ![License](https://img.shields.io/badge/License-MIT-green)
-![Platform](https://img.shields.io/badge/Platform-Windows-lightgrey)
+![Platform](https://img.shields.io/badge/Platform-Windows%20%7C%20Linux%20%7C%20macOS-lightgrey)
+![Tests](https://img.shields.io/badge/Tests-11%20passed-brightgreen)
 ![Security](https://img.shields.io/badge/Focus-Cybersecurity-red)
 
 # Web Recon Automation Framework
 
 A modular Python-based reconnaissance framework that automates the collection of publicly available information about an authorized web target and generates a structured HTML reconnaissance report.
 
-The project demonstrates practical cybersecurity automation, modular Python development, reconnaissance techniques, error handling, logging, and security reporting.
+The project demonstrates practical cybersecurity automation, modular Python development, reconnaissance techniques, error handling, logging, testing, and security reporting.
 
 ---
 
@@ -31,7 +31,7 @@ The framework accepts a domain or URL and collects:
 - `sitemap.xml`
 - Basic security observations
 
-The collected information is then compiled into a professional HTML report.
+The collected information is then compiled into a structured HTML report.
 
 ---
 
@@ -42,13 +42,17 @@ The collected information is then compiled into a professional HTML report.
 - 📍 IP geolocation with ISP, organization, and ASN details
 - 🏷️ WHOIS domain information gathering
 - 🌐 HTTP response and header analysis
-- 🔐 SSL/TLS certificate and protocol analysis
+- 🔐 SSL/TLS certificate analysis
 - 🤖 `robots.txt` and `sitemap.xml` discovery
 - 🛡️ Security header analysis
 - 📊 Automated HTML reconnaissance report generation
-- 📝 Structured logging for reconnaissance activities
+- 📝 Structured logging
+- 🧪 Automated unit testing with pytest
 - ⚙️ Modular Python-based architecture
 - ❌ Graceful handling of invalid or unreachable targets
+- 🖥️ Cross-platform setup instructions
+- 📁 Custom report output path
+- 🔎 Verbose logging option
 
 ---
 
@@ -57,44 +61,45 @@ The collected information is then compiled into a professional HTML report.
 The framework follows a modular architecture where each reconnaissance task is handled by a separate module.
 
 ```text
-                    Target Domain
-                         │
-                         ▼
-                 ┌───────────────┐
-                 │ Target        │
-                 │ Validator     │
-                 └───────┬───────┘
-                         │
-                         ▼
-              ┌──────────────────────┐
-              │   Reconnaissance     │
-              │      Modules         │
-              └──────────┬───────────┘
-                         │
-       ┌─────────────────┼─────────────────┐
-       │                 │                 │
-       ▼                 ▼                 ▼
-     DNS/IP            WHOIS          HTTP/SSL
-       │                 │                 │
-       └─────────────────┼─────────────────┘
-                         │
-                         ▼
-                Web Files Analysis
-                         │
-                         ▼
-              Security Header Analysis
-                         │
-                         ▼
-                Data Aggregation
-                         │
-                         ▼
-               HTML Report Generator
-                         │
-                         ▼
-                 Reconnaissance Report
+                    Target Domain / URL
+                           │
+                           ▼
+                  ┌─────────────────┐
+                  │ Target Validator│
+                  └────────┬────────┘
+                           │
+                           ▼
+              ┌─────────────────────────┐
+              │   Reconnaissance        │
+              │       Modules           │
+              └────────────┬────────────┘
+                           │
+       ┌───────────────────┼───────────────────┐
+       │                   │                   │
+       ▼                   ▼                   ▼
+    DNS / IP             WHOIS             HTTP / SSL
+       │                   │                   │
+       └───────────────────┼───────────────────┘
+                           │
+                           ▼
+                  Web Files Analysis
+                           │
+                           ▼
+                Security Header Analysis
+                           │
+                           ▼
+                    Data Aggregation
+                           │
+                           ▼
+                 HTML Report Generator
+                           │
+                           ▼
+                  Reconnaissance Report
 ```
 
-### Module Structure
+---
+
+## 📦 Module Structure
 
 | Module | Responsibility |
 |---|---|
@@ -110,17 +115,199 @@ The framework follows a modular architecture where each reconnaissance task is h
 | `modules/report_generator.py` | Generates the final HTML report |
 
 ---
-## 🚀 Usage
 
-### 1. Clone the repository
+# 🚀 Installation
+
+## Prerequisites
+
+Make sure Python 3.x and Git are installed.
+
+Check Python:
+
+```bash
+python --version
+```
+
+Check Git:
+
+```bash
+git --version
+```
+
+---
+
+## 1. Clone the Repository
 
 ```bash
 git clone https://github.com/vk18-tech/Web-Recon-Automation.git
 cd Web-Recon-Automation
+```
 
-## 🔎 Features
+---
 
-### DNS Reconnaissance
+## 2. Create a Virtual Environment
+
+### Windows PowerShell
+
+```powershell
+python -m venv venv
+```
+
+### Windows Command Prompt
+
+```cmd
+python -m venv venv
+```
+
+### Linux / macOS
+
+```bash
+python3 -m venv venv
+```
+
+---
+
+## 3. Activate the Virtual Environment
+
+### Windows PowerShell
+
+```powershell
+.\venv\Scripts\Activate.ps1
+```
+
+### Windows Command Prompt
+
+```cmd
+venv\Scripts\activate
+```
+
+### Linux / macOS
+
+```bash
+source venv/bin/activate
+```
+
+After activation, your terminal should display:
+
+```text
+(venv)
+```
+
+---
+
+## 4. Install Dependencies
+
+The project dependencies are defined in `requirements.txt`.
+
+```bash
+pip install -r requirements.txt
+```
+
+---
+
+# ▶️ Usage
+
+The framework requires an authorized domain or URL.
+
+Basic usage:
+
+```bash
+python main.py example.com
+```
+
+The framework performs:
+
+```text
+DNS reconnaissance
+        ↓
+IP reconnaissance
+        ↓
+IP geolocation
+        ↓
+WHOIS reconnaissance
+        ↓
+HTTP reconnaissance
+        ↓
+SSL/TLS reconnaissance
+        ↓
+Web files reconnaissance
+        ↓
+Security header analysis
+        ↓
+HTML report generation
+```
+
+---
+
+## 🔎 Command-Line Options
+
+### Display Help
+
+```bash
+python main.py --help
+```
+
+Available options include:
+
+```text
+usage: main.py [-h] [--verbose] [--output OUTPUT] target
+
+Automated web reconnaissance and HTML reporting framework.
+
+positional arguments:
+  target           Target domain or URL
+
+options:
+  -h, --help       show this help message and exit
+  --verbose        Display detailed logging information during reconnaissance
+  --output OUTPUT  Custom path for the generated HTML report
+```
+
+---
+
+## 📝 Verbose Mode
+
+Use `--verbose` to enable detailed logging during reconnaissance.
+
+```bash
+python main.py example.com --verbose
+```
+
+This is useful when troubleshooting or monitoring reconnaissance activity.
+
+---
+
+## 📄 Custom Report Location
+
+By default, the framework generates the report inside the `reports/` directory.
+
+```bash
+python main.py example.com
+```
+
+Default output:
+
+```text
+reports/recon_report_example.com.html
+```
+
+A custom output path can be specified using `--output`:
+
+```bash
+python main.py example.com --output reports/test_report.html
+```
+
+The report will then be generated at:
+
+```text
+reports/test_report.html
+```
+
+---
+
+# 🔎 Features
+
+## DNS Reconnaissance
 
 Collects:
 
@@ -131,14 +318,18 @@ Collects:
 - TXT records
 - CNAME records
 
-### IP Reconnaissance
+---
+
+## IP Reconnaissance
 
 Identifies:
 
 - IPv4 addresses
 - IPv6 addresses
 
-### IP Geolocation
+---
+
+## IP Geolocation
 
 Collects basic publicly available information associated with discovered IP addresses:
 
@@ -152,7 +343,11 @@ Collects basic publicly available information associated with discovered IP addr
 - Organization
 - ASN
 
-### WHOIS Reconnaissance
+IP geolocation results are approximate and should not be interpreted as the exact physical location of a system.
+
+---
+
+## WHOIS Reconnaissance
 
 Collects available domain registration information such as:
 
@@ -163,7 +358,11 @@ Collects available domain registration information such as:
 - Name servers
 - Domain status
 
-### HTTP Reconnaissance
+WHOIS availability depends on the target domain and WHOIS server.
+
+---
+
+## HTTP Reconnaissance
 
 Collects:
 
@@ -173,7 +372,9 @@ Collects:
 - Content type
 - HTTP response headers
 
-### SSL/TLS Reconnaissance
+---
+
+## SSL/TLS Reconnaissance
 
 Collects:
 
@@ -183,7 +384,9 @@ Collects:
 - Certificate validity period
 - Days remaining
 
-### Web Files Reconnaissance
+---
+
+## Web Files Reconnaissance
 
 Checks for:
 
@@ -192,7 +395,9 @@ Checks for:
 
 The framework records whether these resources are available and captures their content when accessible.
 
-### Security Header Analysis
+---
+
+## Security Header Analysis
 
 Checks for commonly used security headers:
 
@@ -203,9 +408,47 @@ Checks for commonly used security headers:
 - Referrer-Policy
 - Permissions-Policy
 
-It also checks whether the HTTP Server banner is exposed.
+It also checks whether the HTTP `Server` banner is exposed.
 
-### Logging
+### Important
+
+A missing security header or exposed server banner is an **observation** and does not automatically confirm a vulnerability.
+
+---
+
+# 🧪 Testing
+
+The project includes automated tests using `pytest`.
+
+Run the test suite:
+
+```bash
+pytest
+```
+
+Current test coverage includes:
+
+- Target validation
+- DNS reconnaissance
+- Security header analysis
+
+Example:
+
+```text
+============================= test session starts =============================
+
+collected 11 items
+
+tests/test_dns_recon.py ...
+tests/test_security_headers.py .....
+tests/test_validator.py ...
+
+============================== 11 passed ==============================
+```
+
+---
+
+# 📝 Logging
 
 The framework records important events and errors in:
 
@@ -213,76 +456,18 @@ The framework records important events and errors in:
 logs/recon.log
 ```
 
----
+The logging system records events such as:
 
-## 🚀 Installation
+- Target validation
+- Reconnaissance module execution
+- Errors
+- Report generation
 
-### 1. Clone the repository
-
-```bash
-git clone https://github.com/vk18-tech/Web-Recon-Automation.git
-cd Web-Recon-Automation
-```
-
-### 2. Create a virtual environment
-
-On Windows PowerShell:
-
-```powershell
-python -m venv venv
-```
-
-### 3. Activate the virtual environment
-
-```powershell
-.\venv\Scripts\Activate.ps1
-```
-
-### 4. Install dependencies
-
-```powershell
-pip install -r requirements.txt
-```
+The `logs/` directory is excluded from Git using `.gitignore`.
 
 ---
 
-## ▶️ Usage
-
-Run the framework by providing an authorized domain:
-
-```powershell
-python main.py example.com
-```
-
-Example output:
-
-```text
-# Web Recon Automation Framework
-
-Target: example.com
-
-[+] Starting DNS reconnaissance...
-[+] Starting IP reconnaissance...
-[+] Starting IP geolocation...
-[+] Starting WHOIS reconnaissance...
-[+] Starting HTTP reconnaissance...
-[+] Starting SSL/TLS reconnaissance...
-[+] Starting web files reconnaissance...
-[+] Starting security header analysis...
-[+] Generating HTML reconnaissance report...
-
-[+] Report generated successfully!
-```
-
-The generated report is saved in:
-
-```text
-reports/recon_report_example.com.html
-```
-
----
-
-## 📄 Sample Report
+# 📊 Sample Report
 
 A sample reconnaissance report generated by the framework is included in the repository.
 
@@ -304,29 +489,33 @@ The report contains:
 
 ---
 
-## 🛠️ Technology Stack
+# 🛠️ Technology Stack
 
 - **Language:** Python 3
 - **DNS & Network Recon:** `dnspython`
-- **WHOIS:** WHOIS lookup functionality
+- **WHOIS:** `python-whois`
 - **HTTP Analysis:** `requests`
 - **SSL/TLS:** Python `ssl` module
 - **IP Geolocation:** IP geolocation API
-- **Report Generation:** HTML / Python
+- **Report Generation:** Python / HTML
 - **Logging:** Python `logging`
+- **Testing:** `pytest`
 - **Version Control:** Git & GitHub
 
 ---
 
-## 📁 Project Structure
+# 📁 Project Structure
 
 ```text
 Web-Recon-Automation/
 │
 ├── core/
+│   ├── __init__.py
+│   ├── logger.py
 │   └── validator.py
 │
 ├── modules/
+│   ├── __init__.py
 │   ├── dns_recon.py
 │   ├── ip_recon.py
 │   ├── geolocation_recon.py
@@ -337,6 +526,11 @@ Web-Recon-Automation/
 │   ├── security_headers.py
 │   └── report_generator.py
 │
+├── tests/
+│   ├── test_dns_recon.py
+│   ├── test_security_headers.py
+│   └── test_validator.py
+│
 ├── reports/
 │   └── recon_report_example.com.html
 │
@@ -345,31 +539,36 @@ Web-Recon-Automation/
 │   ├── 02_html_report.png
 │   └── 03_security_headers.png
 │
+├── logs/
+│   └── recon.log
+│
 ├── main.py
 ├── requirements.txt
+├── pytest.ini
 ├── README.md
+├── LICENSE
 └── .gitignore
 ```
 
 ---
 
-## 📸 Screenshots
+# 📸 Screenshots
 
-### Framework Execution
+## Framework Execution
 
 ![Framework Execution](screenshots/01_framework_execution.png)
 
-### Generated HTML Report
+## Generated HTML Report
 
 ![HTML Report](screenshots/02_html_report.png)
 
-### Security Header Analysis
+## Security Header Analysis
 
 ![Security Header Analysis](screenshots/03_security_headers.png)
 
 ---
 
-## ⚠️ Limitations
+# ⚠️ Limitations
 
 - Results depend on DNS, WHOIS, geolocation, and target-server availability.
 - Some WHOIS servers may restrict automated queries.
@@ -378,37 +577,27 @@ Web-Recon-Automation/
 - `robots.txt` and `sitemap.xml` may not exist on every website.
 - Some HTTP or SSL/TLS information may be unavailable when a target is unreachable.
 - The framework performs passive/basic reconnaissance and does not perform exploitation or intrusive vulnerability scanning.
+- The framework depends on third-party services and libraries for some reconnaissance functions.
 
 ---
 
-## 🔐 Responsible Use
+# 🔐 Responsible Use
 
-This framework is intended for authorized security testing, learning, and reconnaissance.
+This framework is intended for:
 
-Only run the tool against domains and systems that you own or have explicit permission to assess.
+- Authorized security testing
+- Cybersecurity education
+- Security research
+- Reconnaissance of systems you own
+- Assessments where explicit permission has been granted
+
+Only run this tool against domains and systems that you own or have explicit authorization to assess.
 
 The project does not perform exploitation or unauthorized access.
 
 ---
 
-## 📚 Learning Outcomes
-
-Through this project, I learned how to:
-
-- Design a modular Python security tool
-- Automate common reconnaissance tasks
-- Work with DNS and domain information
-- Process HTTP and SSL/TLS information
-- Perform basic security-header analysis
-- Handle network failures gracefully
-- Implement structured application logging
-- Generate automated security reports
-- Organize a cybersecurity project for GitHub
-- Document technical limitations and responsible use
-
----
-
-## 👩‍💻 Author
+# 👩‍💻 Author
 
 **Shrishti Pandey**
 
@@ -416,8 +605,8 @@ B.Tech Computer Science Student | Cybersecurity Enthusiast | SOC Analyst Aspiran
 
 ---
 
-## ⭐ Project Status
+# 📄 License
 
-**Status:** Completed
+This project is licensed under the MIT License.
 
-The framework is functional and can be extended with additional reconnaissance modules and security analysis capabilities.
+See the [LICENSE](LICENSE) file for details.
